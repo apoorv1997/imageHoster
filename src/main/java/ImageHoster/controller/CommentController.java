@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Controller
@@ -32,15 +31,15 @@ public class CommentController {
 
         Image image = imageservice.getImage(imageId);
         User user = (User) session.getAttribute("loggeduser");
-        Comment userComment = new Comment();
-        userComment.setText(comment);
-        userComment.setUser(user);
-        userComment.setImage(image);
-        userComment.setCreatedDate(new Date());
-        commentService.saveComment(userComment);
+        Comment userCreatedComment = new Comment();
+        userCreatedComment.setText(comment);
+        userCreatedComment.setUser(user);
+        userCreatedComment.setImage(image);
+        userCreatedComment.setCreatedDate(new Date());
+        commentService.saveComment(userCreatedComment);
 
         Image imageWithComments = imageservice.getImage(imageId);
-        model.addAttribute("comments", userComment);
+        model.addAttribute("comments", userCreatedComment);
         model.addAttribute("image", imageWithComments);
         model.addAttribute("tags", imageWithComments.getTags());
 
