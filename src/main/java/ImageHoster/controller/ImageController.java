@@ -95,7 +95,7 @@ public class ImageController {
     public String editImage(@RequestParam("imageId") Integer imageId, Model model, HttpSession session) {
         Image image = imageService.getImage(imageId);
         User user = (User) session.getAttribute("loggeduser");
-        if(image.getUser().getId() != user.getId()) {
+        if(image.getUser().getId() != user.getId()) { // finding if image user and logged in user are same or not.
             String error = "Only the owner of the image can edit the image";
             model.addAttribute("image", image);
             model.addAttribute("tags", image.getTags());
@@ -151,7 +151,7 @@ public class ImageController {
     public String deleteImageSubmit(@RequestParam(name = "imageId") Integer imageId, Model model, HttpSession session) {
         Image image = imageService.getImage(imageId);
         User user = (User) session.getAttribute("loggeduser");
-        if(image.getUser().getId() != user.getId()) {
+        if(image.getUser().getId() != user.getId()) { // finding if image user and logged in user are same or not.
             String error = "Only the owner of the image can delete the image";
             model.addAttribute("image", image);
             model.addAttribute("tags", image.getTags());

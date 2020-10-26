@@ -5,7 +5,6 @@ import ImageHoster.model.Image;
 import ImageHoster.model.User;
 import ImageHoster.service.CommentService;
 import ImageHoster.service.ImageService;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +43,6 @@ public class CommentController {
         model.addAttribute("image", imageWithComments);
         model.addAttribute("tags", imageWithComments.getTags());
 
-        return "images/image";
+        return "images/image"; // redirecting user back to the page where all image details are available.
     }
 }

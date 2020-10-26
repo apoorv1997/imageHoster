@@ -20,7 +20,7 @@ public class Comment {
     @Column(name = "created_date")
     private Date createdDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER) // fetch type eager to get all user details who has made comment.
     @JoinColumn(name = "user_id")
     private User user;
 
