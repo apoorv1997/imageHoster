@@ -20,11 +20,11 @@ public class Comment {
     @Column(name = "created_date")
     private Date createdDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER) // fetching it eager because we want the user details when the comments are added by the user.
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER) // fetching image eager because it is needed to know which image comments are added to.
     @JoinColumn(name = "image_id")
     private Image image;
 

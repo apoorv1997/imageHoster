@@ -25,6 +25,7 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    // added comment controller to add comments made by user, redirecting user back to image page where comments are visible.
     @RequestMapping(value = "/image/{imageId}/{imageTitle}/comments", method = RequestMethod.POST)
     public String saveComment(@PathVariable("imageId") Integer imageId, @RequestParam("comment") String comment, HttpSession session, Model model) {
 
