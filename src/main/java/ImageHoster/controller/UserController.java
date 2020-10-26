@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 
 @Controller
@@ -45,7 +44,7 @@ public class UserController {
     @RequestMapping(value = "users/registration", method = RequestMethod.POST)
     public String registerUser(User user, Model model) {
         PasswordValidatorCheck passwordValidatorCheck = new PasswordValidatorCheck();
-        boolean passwordStrengthCheck = passwordValidatorCheck.checkPasswordRegex(user.getPassword())''
+        boolean passwordStrengthCheck = passwordValidatorCheck.checkPasswordRegex(user.getPassword());
         if (!passwordStrengthCheck) {
             String error = "Password must contain atleast 1 alphabet, 1 number & 1 special character";
             UserProfile profile = new UserProfile();
