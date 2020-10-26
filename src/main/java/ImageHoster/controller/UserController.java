@@ -1,5 +1,6 @@
 package ImageHoster.controller;
 
+import ImageHoster.PasswordValidatorCheck;
 import ImageHoster.model.Image;
 import ImageHoster.model.User;
 import ImageHoster.model.UserProfile;
@@ -43,12 +44,10 @@ public class UserController {
     //This method calls the business logic and after the user record is persisted in the database, directs to login page
     @RequestMapping(value = "users/registration", method = RequestMethod.POST)
     public String registerUser(User user, Model model) {
-        String PASSWORD_PATTERN = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40})";
-        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
-        Matcher matcher = pattern.matcher(user.getPassword());
-        if (!matcher.matches()) {
+        PasswordValidatorCheck passwordValidatorCheck = new PasswordValidatorCheck();
+        boolean passwordStrengthCheck = passwordValidatorCheck.checkPasswordRegex(user.getPassword())''
+        if (!passwordStrengthCheck) {
             String error = "Password must contain atleast 1 alphabet, 1 number & 1 special character";
-
             UserProfile profile = new UserProfile();
             user.setProfile(profile);
             model.addAttribute("User", user);

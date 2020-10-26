@@ -18,7 +18,6 @@ public class CommentRepository {
     public Comment saveComment(Comment comment) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
-
         try {
             transaction.begin();
             em.persist(comment);
