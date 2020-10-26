@@ -54,7 +54,7 @@ public class UserController {
             return "users/registration";
         } else {
             userService.registerUser(user);
-            return "redirect:/users/login";
+            return "users/login";
         }
     }
 

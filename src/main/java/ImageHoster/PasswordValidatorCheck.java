@@ -7,10 +7,11 @@ public class PasswordValidatorCheck {
 
     private Pattern pattern;
     private Matcher matcher;
-    private static final String PASSWORD_CHECK_REGEX = "[a-zA-Z0-9\\-#\\.\\(\\)\\/%&@$*^\\s]{0,40}";
-
+//    private static final String PASSWORD_CHECK_REGEX = "[a-zA-Z0-9!@#$%^&*()./;]*$";
+    private static final String PASSWORD_ALPHANUMERIC_REGEX = "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[$&+,:;=?@#|])[A-Za-z0-9$&+,:;=?@#|]+$";
+    //private static final String PASSWORD_SPECIAL_REGEX = "[$&+,:;=?@#|]";
     public PasswordValidatorCheck() {
-        pattern = Pattern.compile(PASSWORD_CHECK_REGEX);
+        pattern = Pattern.compile(PASSWORD_ALPHANUMERIC_REGEX);
     }
 
     public boolean checkPasswordRegex(String userPassword) {
